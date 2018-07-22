@@ -1,0 +1,36 @@
+<div class="container">
+<h1>Models</h1>
+ <%= will_paginate %>
+
+  <table class="table table-striped">
+
+  <thead>
+  <tr>
+      <th scope="col">#</th>
+      <th scope="col">Model Name</th>
+      <th scope="col">Input Text</th>
+      <th scope="col">Prediction</th>
+      <th scope="col">Confidence(%)</th>
+     
+    </tr>
+     
+  </thead> 
+
+  <tbody>
+    
+    <% @results.each  do |md| %>
+    <tr>
+      <td scope="row"><%= md.id %></td>
+      <td><%= md.modelname %></td>
+      <td><%= md.inputtext %></td>
+      <td><%= md.pred %></td>
+      <td><%= md.conf %></td>
+     </tr>
+     <% end %>
+    </tbody>>
+     </table>
+    <%= will_paginate %>
+
+  </div>
+
+   

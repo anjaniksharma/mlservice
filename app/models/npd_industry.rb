@@ -1,0 +1,2 @@
+class NpdIndustry < ApplicationRecord
+end

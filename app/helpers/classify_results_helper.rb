@@ -1,0 +1,2 @@
+module ClassifyResultsHelper
+end

@@ -1,0 +1,21 @@
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>ModelName</th>
+    <th>InputText</th>
+    <th>Prediction</th>
+    <th>Confidence</th>
+    <th>Pred Date</th>
+  </tr>
+  <% @classify_results.each do |res| %>
+  <tr>
+    <td><%= res.id %></td>
+    <td><%= res.modelname %></td>
+    <td><%= res.inputtext %></td>
+    <td><%= res.pred %></td>
+    <td><%= res.conf %></td>
+    <td><%= res.created_at %></td>
+  </tr>
+  <% end %>
+</table>
+

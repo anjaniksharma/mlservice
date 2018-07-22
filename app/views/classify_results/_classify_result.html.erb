@@ -1,0 +1,12 @@
+  
+    <tr>
+      <td scope="row"><%= classify_result.id %></td>
+      <td><%= classify_result.modelname %></td>
+      <td><%= classify_result.inputtext %></td>
+      <td><%= classify_result.pred %></td>
+      <td><%= classify_result.conf %></td>
+      <td><%= link_to "delete", classify_result, method: :delete,
+                                  data: { confirm: "You sure?" } %></td>
+      
+     </tr>
+    

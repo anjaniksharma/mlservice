@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  modelname: MyString
+  inputtext: MyText
+  pred: MyString
+  conf: 1
+
+two:
+  modelname: MyString
+  inputtext: MyText
+  pred: MyString
+  conf: 1

@@ -1,0 +1,34 @@
+<h1> Classification Results Review </h1>
+
+
+ <p>
+  Download:
+  <%= link_to "CSV", show_path(format: "csv") %> |
+  <%= link_to "Excel", show_path(format: "xls") %>
+</p>
+ <%= will_paginate %>
+<table class="table table-striped">
+
+  <thead>
+  <tr>
+      <th scope="col">#</th>
+      <th scope="col">Model Name</th>
+      <th scope="col">Input Text</th>
+      <th scope="col">Prediction</th>
+      <th scope="col">Confidence(%)</th>
+      <th scope="col">Delete</th>
+     
+    </tr>
+     
+  </thead> 
+
+  <tbody>
+  
+  <ul class="classify_results">
+    <%= render @classify_results %>
+  </ul>
+
+    </tbody>
+   
+</table>
+<%= will_paginate %>
