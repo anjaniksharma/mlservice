@@ -1,0 +1,51 @@
+
+<h1>Input Text Classifcation</h1>
+
+
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+    <%= form_for(ClassifyResult.new, url: text_path) do |f| %>
+    <%= render 'shared/error_messages' , object: f.object %>
+
+      <%= f.label :inputtext %>
+      <%= f.text_field :inputtext, class: 'form-control' %>
+
+      <%= f.label :model_id %>
+      <%= f.select :model_id, MlModel.all.pluck(:name,:id), {}, {class: "form-control"} %>
+     
+      <%= f.submit "Predict", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+<div class="container-fluid">
+
+<table class="table table-striped">
+
+  <thead>
+  <tr>
+      <th scope="col">#</th>
+      <th scope="col">Model Name</th>
+      <th scope="col">Input Text</th>
+      <th scope="col">Prediction</th>
+      <th scope="col">Confidence(%)</th>
+      <th scope="col">Delete</th>
+     
+    </tr>
+     
+  </thead> 
+
+  <tbody>
+  
+  <ul class="classify_results">
+    <%= render ClassifyResult.first(5)%>
+  </ul>
+
+    </tbody>
+   
+</table>
+
+
+</div>
+
