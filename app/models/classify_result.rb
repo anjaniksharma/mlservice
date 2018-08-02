@@ -21,10 +21,10 @@ private
     
 	def tcp_get_respose()
 		
-		streamSock = TCPSocket.new( "lpwaidqu04", self.port )  
-		streamSock.puts "12345678901234567890|" +inputtext.upcase
-		outputtext = streamSock.recv(512)
-		#outputtext = "|1070238717|99.010~"
+		#streamSock = TCPSocket.new( "lpwaidqu04", self.port )  
+		#streamSock.puts "12345678901234567890|" +inputtext.upcase
+		#outputtext = streamSock.recv(512)
+		outputtext = "|1070238717|99.010~"
 		lst = outputtext.split("~")[0].split("|")
 		self.pred = get_alpha_from_code(lst[1])
 		self.conf = lst[2]

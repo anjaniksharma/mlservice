@@ -1,7 +1,7 @@
 class ClassifyResultsController < ApplicationController
 
   def new
-  	#@classify_results = ClassifyResult.new
+  	@classify_results = ClassifyResult.new
   	@classify_results = ClassifyResult.paginate(page: params[:page])
   end
 
@@ -17,7 +17,7 @@ class ClassifyResultsController < ApplicationController
 
   def destroy
   	ClassifyResult.find(params[:id]).destroy
-  	redirect_to show_url	
+  	redirect_to results_url	
   end
 
   def create 
@@ -41,18 +41,19 @@ class ClassifyResultsController < ApplicationController
     	flash.now[:info] = @res.errors.full_messages
     end
     #@classify_results = ClassifyResult.new
-    #flash.now[:info] =    "Model Name ---->["  + @res[:modelname] + "]------>Input Text---->["  + @res[:inputtext] + "]"
-    #flash.now[:warning] = "Industry ------>["  + @res[:pred] + "]------Confidence ---->[" + @res[:conf].to_s + "]"
-    
+    if not logged_in?
+    flash.now[:info] =    "Model Name ---->["  + @res[:modelname] + "]------>Input Text---->["  + @res[:inputtext] + "]"
+    flash.now[:warning] = "Industry ------>["  + @res[:pred] + "]------Confidence ---->[" + @res[:conf].to_s + "]"
+    end
 
-    render :new
+    render 'new'
     #redirect_to classifytext_url
 	
   end
-
-  def classify_params
-      params.require(:classify_result).permit(:model_id, :inputtext)
-  end
+private
+      def classify_params
+          params.require(:classify_result).permit(:model_id, :inputtext)
+      end
 
   
   

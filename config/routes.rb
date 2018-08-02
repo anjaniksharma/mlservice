@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  #get 'users/new'
+  
+  
+ 
+  get   '/newjob',  to: 'filejobs#new'
+  post  '/filejob',  to: 'filejobs#create'
+  get   '/filejob',  to: 'filejobs#index'
 
-  #get 'classify_results/index'
-
-  #get 'ml_models/index'
-
-  #get  '/',  to: 'classify_results#new'
 
   get   '/text',  to: 'classify_results#new'
   post  '/text',  to: 'classify_results#create'
@@ -15,8 +15,13 @@ Rails.application.routes.draw do
   get  '/signup',  to: 'users#new'
   post '/signup', to: 'users#create'
  
+
+ get    '/login',   to: 'sessions#new'
+ post   '/login',   to: 'sessions#create'
+ delete '/logout',  to: 'sessions#destroy'
   
   resources :classify_results
   resources :users
+  resources :filejobs
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

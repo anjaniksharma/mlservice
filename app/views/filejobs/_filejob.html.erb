@@ -1,0 +1,13 @@
+  
+    <tr>
+      <td scope="row"><%= filejob.id %></td>
+      <td><%= filejob.name %></td>
+      <td><%= filejob.modelname %></td>
+       <td><%= link_to filejob.origfilename, filejob.fileuri, download: filejob.origfilename %></td>
+       
+       <td><%= filejob.created_at %></td>
+      <td><%= link_to "delete", filejob, method: :delete,
+                                  data: { confirm: "You sure?" } %></td>
+      
+     </tr>
+    

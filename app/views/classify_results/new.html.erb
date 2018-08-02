@@ -19,6 +19,7 @@
     <% end %>
   </div>
 </div>
+<% if logged_in? %>
 <div class="container-fluid">
 
 <table class="table table-striped">
@@ -30,7 +31,7 @@
       <th scope="col">Input Text</th>
       <th scope="col">Prediction</th>
       <th scope="col">Confidence(%)</th>
-      <th scope="col">Delete</th>
+      
      
     </tr>
      
@@ -38,9 +39,10 @@
 
   <tbody>
   
-  <ul class="classify_results">
-    <%= render ClassifyResult.first(5)%>
+      <ul class="classify_results">
+    <%= render @classify_results %>
   </ul>
+
 
     </tbody>
    
@@ -48,4 +50,4 @@
 
 
 </div>
-
+<% end %>

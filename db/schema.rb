@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180722144254) do
+ActiveRecord::Schema.define(version: 20180731213014) do
 
   create_table "classifies", force: :cascade do |t|
     t.text "inputtext"
@@ -26,6 +26,16 @@ ActiveRecord::Schema.define(version: 20180722144254) do
     t.float "conf"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "filejobs", force: :cascade do |t|
+    t.string "name"
+    t.string "modelname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "inputfile"
+    t.string "origfilename"
+    t.string "fileuri"
   end
 
   create_table "ml_models", force: :cascade do |t|

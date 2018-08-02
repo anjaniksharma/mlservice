@@ -1,0 +1,9 @@
+id,modelname,inputtext,pred,conf,created_at,updated_at
+115,All - Toys EU Retailers,TOY SMALL ,Toys,99.266,2018-07-23 15:19:20 UTC,2018-07-23 15:19:20 UTC
+114,All - Toys EU Retailers,JKJ KJL,Excluded,94.751,2018-07-23 15:18:45 UTC,2018-07-23 15:18:45 UTC
+113,All - North American Retailers,LJL,Grocery,5.046,2018-07-23 15:12:42 UTC,2018-07-23 15:12:42 UTC
+112,All - North American Retailers,LJL,Grocery,5.046,2018-07-23 15:02:50 UTC,2018-07-23 15:02:50 UTC
+111,All - Toys EU Retailers,LJL,Excluded,50.0,2018-07-23 15:00:54 UTC,2018-07-23 15:00:54 UTC
+110,All - Toys EU Retailers,LJL,Excluded,50.0,2018-07-23 14:51:37 UTC,2018-07-23 14:51:37 UTC
+109,All - Toys EU Retailers,uoiuov,Appliances,99.01,2018-07-23 14:45:38 UTC,2018-07-23 14:45:38 UTC
+108,All - Toys EU Retailers,hkjhkjhkj,Appliances,99.01,2018-07-23 02:48:03 UTC,2018-07-23 02:48:03 UTC
