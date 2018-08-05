@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180731213014) do
+ActiveRecord::Schema.define(version: 20180805013042) do
 
   create_table "classifies", force: :cascade do |t|
     t.text "inputtext"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 20180731213014) do
     t.float "conf"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_classify_results_on_user_id"
   end
 
   create_table "filejobs", force: :cascade do |t|
@@ -36,6 +38,8 @@ ActiveRecord::Schema.define(version: 20180731213014) do
     t.string "inputfile"
     t.string "origfilename"
     t.string "fileuri"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_filejobs_on_user_id"
   end
 
   create_table "ml_models", force: :cascade do |t|

@@ -1,12 +1,12 @@
 class ClassifyResultsController < ApplicationController
-
+before_action -> { flash.now[:notice] = flash[:notice].html_safe if flash[:html_safe] && flash[:notice] }
   def new
-  	@classify_results = ClassifyResult.new
-  	@classify_results = ClassifyResult.paginate(page: params[:page])
+  	@classify_result ||= ClassifyResult.new
+  	#@classify_results = ClassifyResult.paginate(page: params[:page])
   end
 
   def index
-  	@classify_results = ClassifyResult.paginate(page: params[:page])
+  	@classify_results = current_user.classify_results.paginate(page: params[:page])
   	
     respond_to do |format|
       format.html 
@@ -21,34 +21,25 @@ class ClassifyResultsController < ApplicationController
   end
 
   def create 
-  	#@classify_result = ClassifyResult.new
-  	#inp = params[:classify_result][:inputtext].upcase
-  	#inputtext="12345678901234567890|" + inp
-  	#rec = MlModel.find(params[:classify_result][:modelname])
-  	#port = rec[:port]
-  	#model_name = rec[:name]
-  	#outputtext = tcp_get_respose(inputtext,port)
-  	#lst = outputtext.split("~")[0].split("|")
-  	#industry = NpdIndustry.find_by(:code => lst[1]).name
-    #flash.now[:info] = model_name +  ":"  + inp
-    #flash.now[:warning] = "Industry -> " + industry +"           "+ "Confidence -> " + lst[2] 
-    #res_param = {modelname: model_name, inputtext: inp, pred:industry, conf: lst[2]}
-    
-    @res = ClassifyResult.new(classify_params)
-    
+  	
+    @res = current_user.classify_results.build(classify_params)
     
     if not @res.save
-    	flash.now[:info] = @res.errors.full_messages
+      flash[:info] = @res.errors.full_messages
+      render 'new'
+    else
+      redirect_to text_path
     end
-    #@classify_results = ClassifyResult.new
+    
+    
     if not logged_in?
-    flash.now[:info] =    "Model Name ---->["  + @res[:modelname] + "]------>Input Text---->["  + @res[:inputtext] + "]"
-    flash.now[:warning] = "Industry ------>["  + @res[:pred] + "]------Confidence ---->[" + @res[:conf].to_s + "]"
+    redirect_to text_path, notice: "
+                                  <div><b>Model Name:</b>&nbsp&nbsp&nbsp#{@res[:modelname]}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Input Text:</b>&nbsp&nbsp&nbsp#{@res[:inputtext]}</div>
+                                  <div><b>Industry</b>:&nbsp&nbsp&nbsp#{@res[:pred]}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>Confidence:</b>&nbsp&nbsp&nbsp#{@res[:conf]}</div>
+                                  ",
+    flash: { html_safe: true }
+    
     end
-
-    render 'new'
-    #redirect_to classifytext_url
-	
   end
 private
       def classify_params

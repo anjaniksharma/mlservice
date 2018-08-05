@@ -11,7 +11,7 @@
 
   <thead>
   <tr>
-      <th scope="col">#</th>
+     
       <th scope="col">Model Name</th>
       <th scope="col">Input Text</th>
       <th scope="col">Prediction</th>
@@ -25,7 +25,7 @@
   <tbody>
   
   <ul class="classify_results">
-    <%= render @classify_results %>
+    <%= render current_user.classify_results.paginate(page: params[:page]) %>
   </ul>
 
     </tbody>

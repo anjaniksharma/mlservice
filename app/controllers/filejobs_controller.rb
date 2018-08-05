@@ -5,7 +5,7 @@ class FilejobsController < ApplicationController
   end
 
   def new
-  	@filejob = Filejob.new
+  	@filejob = current_user.filejobs.new
   end
 
   def create
@@ -21,7 +21,7 @@ class FilejobsController < ApplicationController
       File.open(path, "wb") {|f| f.write(params[:filejob][:inputfile].read)}
       params[:filejob][:fileuri] = path
       params[:filejob][:origfilename] = params[:filejob][:inputfile].original_filename
-      @filejob = Filejob.new(filejob_params)
+      @filejob = current_user.filejobs.new(filejob_params)
   end
 
     if @filejob.save

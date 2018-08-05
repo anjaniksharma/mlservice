@@ -1,9 +1,11 @@
 class ClassifyResult < ApplicationRecord
 
 	#attr_accessor :modelname, :inputtext, :pred, :conf
-	validates :inputtext, presence: true, length: { minimum: 1 }
+	validates :inputtext, presence: true, length: { minimum: 5 }
+	validates :user_id, presence: true
+	belongs_to :user
 	before_save  :get_model_name_and_port, :tcp_get_respose, :upcase_inputtext
-	attr_accessor :port, :model_id
+	attr_accessor :port, :model_id, :inputtext
 	
 	default_scope -> { order(created_at: :desc) }
     def self.to_csv
@@ -43,7 +45,7 @@ private
   	end
 
   	def upcase_inputtext()
-  		self.inputtext = inputtext.upcase
+  		self.inputtext = inputtext.upcase.delete(' ')
   	end
 
 
